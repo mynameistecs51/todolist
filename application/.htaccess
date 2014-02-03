@@ -1,0 +1,18 @@
+#Turn on URL rewriting
+RewriteEngine ON
+
+#Put yout install directory here:
+RewriteBase /todolist/
+
+#Allow these directories and file to be displayed directly:
+#index.php(Do not forget this!)
+#robots.txt
+#favicon.ico
+#any file inside of the images/,js/,or css/directories
+RewriteCond $1 ^(index\.php|robots\.txt|favicon\.ico|image|javascript|css)
+
+#No rewriting
+RewriteRule ^(.*)$ - [PT,L]
+
+#rewrite all other URLs to index.php/URL
+RewriteRule ^(.*)$ index.php/$1 [PT,L]
